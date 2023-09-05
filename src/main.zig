@@ -1,8 +1,8 @@
 const std = @import("std");
 const testing = std.testing;
 
-var gpa = std.heap.GeneralPurposeAllocator(.{}){};
-var ally = gpa.allocator();
+pub var gpa = std.heap.GeneralPurposeAllocator(.{}){};
+pub var ally = gpa.allocator();
 
 pub const InitState = enum {
     uninited,

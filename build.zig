@@ -16,9 +16,9 @@ pub fn build(b: *std.Build) void {
     const optimize = b.standardOptimizeOption(.{});
 
     const mod = b.createModule(.{
-        .source_file = "src/main.zig",
+        .source_file = std.Build.LazyPath{ .path = "src/main.zig" },
     });
-    b.modules.put("zigs", mod);
+    b.modules.put("zigs", mod) catch std.debug.panic("fail to put module zigs", .{});
 
     const lib = b.addStaticLibrary(.{
         .name = "zigs",

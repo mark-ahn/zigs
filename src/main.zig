@@ -2,6 +2,7 @@ const std = @import("std");
 const testing = std.testing;
 
 var gpa = std.heap.GeneralPurposeAllocator(.{}){};
+var ally = gpa.allocator();
 
 pub const InitState = enum {
     uninited,
@@ -38,6 +39,11 @@ pub fn deinit() !void {
 }
 
 test "module" {
+    testing.log_level = std.log.Level.info;
     try init();
     defer deinit() catch |err| std.debug.panic("error during deinit - {s}\n", .{@errorName(err)});
+
+    var str = try ally.dupe(u8, "test string");
+    defer ally.free(str);
+    // std.log.info("{s}\n", .{str});
 }

@@ -1,6 +1,8 @@
 const std = @import("std");
 const testing = std.testing;
 
+pub usingnamespace @import("ios.zig");
+
 pub const heap = struct {
     pub var gpa = std.heap.GeneralPurposeAllocator(.{}){};
     pub var ally = gpa.allocator();
@@ -50,4 +52,8 @@ test "module" {
     var str = try heap.ally.dupe(u8, "test string");
     defer heap.ally.free(str);
     // std.log.info("{s}\n", .{str});
+}
+
+test {
+    testing.refAllDecls(@import("ios.zig"));
 }

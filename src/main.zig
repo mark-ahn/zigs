@@ -2,6 +2,8 @@ const std = @import("std");
 const testing = std.testing;
 
 pub usingnamespace @import("ios.zig");
+pub usingnamespace @import("iterators.zig");
+pub usingnamespace @import("resources.zig");
 
 pub const heap = struct {
     pub var gpa = std.heap.GeneralPurposeAllocator(.{}){};
@@ -56,4 +58,6 @@ test "module" {
 
 test {
     testing.refAllDecls(@import("ios.zig"));
+    testing.refAllDecls(@import("iterators.zig"));
+    testing.refAllDecls(@import("resources.zig"));
 }

@@ -8,7 +8,7 @@ pub fn Deinitializer(comptime Context: type, comptime Ok: type, comptime Error: 
         pub const IFace = struct {
             impl: Context,
             const Self = @This();
-            fn deinit(self: Self) Error!Ok {
+            pub fn deinit(self: Self) Error!Ok {
                 return try methods.deinit(self.impl);
             }
         };

@@ -1,6 +1,10 @@
 const std = @import("std");
 const testing = std.testing;
 
+// pub fn Iterable(comptime Item: type) type {
+
+// }
+
 pub fn Iterator(comptime Context: type, comptime Item: type, comptime methods: struct {
     next: fn (Context) ?Item,
 }) type {
